@@ -39,7 +39,7 @@ In addition, I just finished re-reading Corey Haines' book [_Understanding the F
 - No Duplication of knowledge
 - Small
 
-My tests pass, so I can skip rule 1. On to rule 2, "Expressg Intent", which this code doesn't do at all. What is the intent of:
+My tests pass, so I can skip rule 1. On to rule 2, "Express Intent", which this code doesn't do at all. What is the intent of:
 
 - Getting the prime factors?
 - The variable named 'ret'. What is ret?
