@@ -23,15 +23,15 @@ These two methods do the same thing:
 
 Opaque
 
-```
+{% highlight ruby %}
 def ex(x)
   Account.transform(x * REQ_A).monkey_kick(:2, self)
 end
-```
+{% endhighlight %}
 
 Transparent
 
-```
+{% highlight ruby %}
 def extend(number_of_months)
   modified_month_count = number_of_months * loyalty_bonus
 
@@ -39,7 +39,7 @@ def extend(number_of_months)
 
   notify_accounting({action: extension, user: self})
 end
-```
+{% endhighlight %}
 
 The opaque method has all the hallmarks of hard-to-understand code. Magic numbers, methods named after jokes, constants with useless names. 
 
@@ -55,16 +55,16 @@ Again, two methods that do the same thing:
 
 Unreasonable
 
-```
+{% highlight ruby %}
 def full_name
   salutation = gender == "M" ? "Mr" : "Ms"
   "#{salutation} #{first_name} #{last_name}"
 end
-```
+{% endhighlight %}
 
 Reasonable
 
-```
+{% highlight ruby %}
 def full_name(salutation: basic_salutation)
   "#{salutation} #{first_name} #{last_name}"
 end
@@ -72,7 +72,7 @@ end
 def basic_salutation
   salutation = gender == "M" ? "Mr" : "Ms"
 end
-```
+{% endhighlight %}
 
 Changing a salutation should be easy. But changing it in the Unreasonable method would require you to alter a ternary to something worse.  In the reasonable method you can pass in any salutation you want or use the basic salutation.
 
@@ -84,21 +84,21 @@ Changing a salutation should be easy. But changing it in the Unreasonable method
 
 Unusuable
 
-```
+{% highlight ruby %}
 def square_number(number)
   number ** 2
 end
-```
+{% endhighlight %}
 
 Usable
 
-```
+{% highlight ruby %}
 class Numeric
   def power(x)
     self ** x
   end
 end
-```
+{% endhighlight %}
 
 `square_number` is syntactic sugar that can only do one thing. Great if you need to square a bunch of numbers, I guess, but unusable beyond that. `power` will work in greater number of contexts.
 
@@ -111,18 +111,18 @@ end
 
 Unworthy
 
-```
+{% highlight ruby %}
 class Array
   def first
     self.reverse[1]
   end
 end
-```
+{% endhighlight %}
 
 
 Exemplary
 
-```
+{% highlight ruby %}
 class MyWeirdList
   include Enumerable
 
@@ -135,7 +135,7 @@ class MyWeirdList
     @collection ||= []
   end
 end
-```
+{% endhighlight %}
 
 Contrived? Sure. But google "monkey patch Array" and marvel at the weird stuff people want to patch into to Array. In the unworthy example we have globally changed the behavior of the `first` method. We don't want people taking this code as an example and continuing the tradition.
 
