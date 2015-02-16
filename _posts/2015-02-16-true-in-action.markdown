@@ -1,13 +1,14 @@
 ---
 layout: post
-title: "TRUE in Action"
+title: "Sandi Metz's TRUE in Action"
+date: 2015-02-16T12:32:45-06:00
 ---
 
 [Last week](http://designisrefactoring.com/2015/02/08/introducing-sandi-metz-true/) I introduced [Sandi Metz](http://www.sandimetz.com)'s TRUE heuristic and promised that this week we'd see in in action<sup>[\*](#action)</sup>. Let's jump right in.
 
-Sandi, along with [Katrina Owen](https://twitter.com/kytrinyx), are working on a [book about OO Design based on the "99 Bottles of Beer" song](http://signup.99bottlesbook.com). If that coding problem is good enough for them, then it's good enough for me! Exercism offers it as [one of their problems](https://github.com/exercism/x-common/blob/master/beer-song.yml) as well, so we already have [a working test suite](https://github.com/exercism/xruby/blob/master/beer-song/beer_song_test.rb).
+Sandi, along with [Katrina Owen](https://twitter.com/kytrinyx), is working on a [book about OO Design based on the "99 Bottles of Beer" song](http://signup.99bottlesbook.com). If that coding problem is good enough for them, then it's good enough for me! Exercism offers it as [one of their problems](https://github.com/exercism/x-common/blob/master/beer-song.yml) as well, so we already have [a working test suite](https://github.com/exercism/xruby/blob/master/beer-song/beer_song_test.rb).
 
-Just hacking code together, I ended up with this solution. 
+Just hacking code together, I ended up with this solution.
 
 {% highlight ruby %}
 class BeerSong
@@ -38,17 +39,17 @@ class BeerSong
 end
 {% endhighlight %}
 
-Now that our tests pass we can ask, how TRUE is our code? That will be easier to discuss in the context of some new features:
+Now that our tests pass we can ask, "How TRUE is our code?" That will be easier to determine in the context of some new features:
 
 - California is clamoring for Beer Song as a Service (BSaaS), but they want it about wine
-- Also, they will get more wine from the cellar, not the store
 - Because wine is stronger, the full song should start with 20 bottles, not 99
+- Also, they will bring up more wine from the cellar, not buy it at a store
 
 ### Transparent
 
 #### It is easy to see the code's function and the effect of a change
 
-`sing` is pretty transparent. `verses` has a bit of rigmarole to handle Ruby's ranges only being ascending, not descending. But it's idiomatic enough that I think it's understandable. The `verse` method isn't as transparent as I'd like. Its if/elsif/else structure uses some magic numbers and also makes it hard to see the differences between the cases. But it's clear enough what is going on there.
+`sing` is pretty transparent. `verses` has a bit of rigmarole to handle Ruby's ranges only being ascending, not descending. But it's idiomatic enough that I understand it. The `verse` method isn't as transparent as I'd like. Its if/elsif/else structure uses some magic numbers and also makes it hard to see the differences between the cases. But its function isn't totally opaque.
 
 Is the code we need to change to implement these features transparent to us? I think so. In a new `WineSong` class we'd change all instances of the word "beer" to "wine" and we need to change the special "no bottles" verse to say that they go to the cellar
 Then we'd change `sing` need to call `verses(20,0)`.
@@ -59,9 +60,9 @@ But then, oops, we see that the 99 is *also* in the special "no bottles" verse, 
 
 #### The effort to make a change reflects its complexity
 
-We can judge reasonableness using the same feature requests. All of these features are very low-complexity changes. Do they all take the same amount of effort? Not really. The cellar wording requires us to change a couple of words, easy. Going from 99 verses to 20 The verse count requires a change to a method and to the wording, so was a little tougher. But changing "beer" to "wine" requires us to change the code in 12 places. Yes, you can use Find and Replace (or your tool of choice) to make that change in one command. But you still end up changing the code in 12 places for a one word change. That seems excessive.
+All of these features are very low-complexity changes. Do they all take the same amount of effort? Not really. The cellar wording requires us to change a couple of words, easy. Going from 99 verses to 20 requires a change to a method and to the wording, so is a little tougher. But changing "beer" to "wine" requires us to change the code in 12 places. Yes, you can use Find and Replace (or your tool of choice) to make that change in one command. But you still end up changing the code in 12 places for a one word change. That seems excessive.
 
-So, for the changes we want to make, our code is not entirely Reasonable. Let's just note that for now and move on.
+So, for the changes we want to make, our code is not entirely Reasonable.
 
 ### Usable
 
@@ -73,7 +74,7 @@ This one is pretty clear. We have code that works in a Beer context, but it requ
 
 #### The code serves as an example for future code
 
-Let's look at our WineSong code.
+Let's look at our we'd implement WineSong without changing BeerSong.
 
 {% highlight ruby %}
 class WineSong
@@ -108,6 +109,8 @@ Because of the way BeerSong was structured we had to duplicate 95% of it in orde
 
 My code is kind of transparent, kind of reasonable, not usable and not exemplary. What is the next step? Like [we did with the 4 Rules](http://designisrefactoring.com/2015/01/05/4-simple-rules-of-raindrops/), let's just start at the beginning and try to improve our code.
 
+### Refactoring Time!
+
 The big problem we had with Transparent was that changing the `sing` method revealed an unexpected necessary change in the `verse` method. Let's fix that.
 
 {% highlight ruby %}
@@ -130,9 +133,9 @@ class BeerSong
 end
 {% endhighlight ruby %}
 
-I don't tend to use constants, but it works here and solves our Transparency problem. If we use this code to create a WineSong then we won't be surprised by the final verse of the song.
+I don't tend to use constants, but it works here and solves our Transparency problem. In _Refactoring_, this approach is closest to "Replace Magic Number with Symbolic Constant" (p. 204).
 
-That change also fixes one of our Reasonable problems, that we had to change the verse method to handle the starting number of wine bottles. We're left with just one: changing 'beer' to 'wine' requires 12 code changes. We can follow the same pattern to fix this.
+This change also fixes a problem that cropped up under Transparent and Reasonable -- changing the verses from 99 to 20 required a change to both `sing` and `verse`. Now if we copy this code into a new WineSong class the number of bottles sung in the last verse will be correct. We're left with just one Reasonableness problem: changing 'beer' to 'wine' requires 12 code changes. We can follow the same pattern to fix this.
 
 {% highlight ruby %}
 class BeerSong
@@ -234,9 +237,10 @@ We can't actually do that, though. Redefining constants is both a bad idea and j
 Before we try another solution, I'll tell you a little secret: Sandi's "Usable" metric is just a stealthy way of saying "Open/Closed Principle". Code that is "usable in other contexts" is code that is "open to extension". I've covered the [Open/Closed Principle](http://designisrefactoring.com/2015/01/25/romans-and-the-open-closed-principle/) before and how to refactor our code so that it follows OCP:
 
 1. Find the code that makes it hard to implement your new feature
-2. Refactor your existing code to remove that difficulty.
+2. Refactor your existing code to remove that difficulty
+3. Extend your newly refactored code with the new feature
 
-We've already done the first step and found the five variables that prevent us from easily implementing WineSong. Let's move on to the second step. If we have variable that need to change between types, then some Extract Class and Inheritance could work.
+We've already done the first step and found the five variables that prevent us from easily implementing WineSong. Let's move on to the second step. If we have variable that need to change between types, then some Extract Class (_Refactoring_, p. 149) and inheritance could work.
 
 {% highlight ruby %}
 class DrinkingSong
@@ -289,7 +293,7 @@ class BeerSong < DrinkingSong
 end
 {% endhighlight ruby %}
 
-Or maybe you want something more Factory-like.<sup>[\*](#factory)</sup>
+Or maybe you want something more Factory-like.<sup>[\*](#factory)</sup>. Then you can Replace Inheritance with Delegation (_Refactoring_, p. 352).
 
 {% highlight ruby %}
 class DrinkingSong
@@ -347,9 +351,9 @@ end
 
 And now we've separated the algorithm of the song from its configuration, meaning that the DrinkingSong can be used in any drinking context (well, anything that comes in bottles; though that dependency would be easy to extract).
 
-We can check **U** off our list and look at **E**xemplary. When I looked at the initial version of this code, I said it was Unexemplary because any additional songs required a nearly-exact copy of the BeerSong class. But, hey, we just solved that problem! There might be some things we want to tweak with our new solution, but it raises far fewer alarms than our old code. I would be ok with the factory-like solution being used for MonsterEnergyDrinkSong, or whatever other song comes our way.
+We can check **U** off our list and look at **E**xemplary. When I reviewed the initial version of this code I said it was Unexemplary because any additional songs required a near-exact copy of the BeerSong class. But, hey, we just solved that problem! There might be some things we want to tweak with our new solution, but it raises far fewer alarms than our old code. I would be ok with the factory-like solution being used for MonsterEnergyDrinkSong, or whatever other song comes our way.
 
-There's still one outstanding problem -- the if/elsif/else-happy `verse` method with and its duplication that we noticed earlier. As we saw when we used [Open/Closed](http://designisrefactoring.com/2015/01/25/romans-and-the-open-closed-principle/), code that doesn't cause problems doesn't get refactored. Right now nothing is compelling me to change this method, so I haven't. There certainly seems to be a lot of duplication in `verse`, but later features might reveal that this is [Incidental Duplication](http://confreaks.tv/videos/rubyconf2010-maintaining-balance-while-reducing-duplication), not duplication of knowledge. More likely, it will reveal the opposite. Point is, it doesn't matter right now, so let's quit before we make the code worse.
+There's still one outstanding problem -- the if/elsif/else-happy `verse` method with and its duplication that we noticed earlier. As we saw when we used [Open/Closed](http://designisrefactoring.com/2015/01/25/romans-and-the-open-closed-principle/), code that doesn't cause problems doesn't get refactored. Nothing compelled me to change this method, so I didn't. There certainly seems to be a lot of duplication in `verse`, but later features might reveal that this is [Incidental Duplication](http://confreaks.tv/videos/rubyconf2010-maintaining-balance-while-reducing-duplication), not duplication of knowledge. Unlikely, but possible. Point is, it doesn't matter right now, so let's quit before we make the code worse.
 
 You do not have to wait to find out what this week's newsletter will be about, I'll just tell you; I'll be talking about one of the most prevalent code smells in the Ruby-verse -- Long Parameter List. You can [sign-up for the newsletter](http://tinyletter.com/ianwhitney/), check out [previous issues](http://tinyletter.com/ianwhitney/archive) or go sledding/surfing (depending on hemisphere). Comments/feedback/&c. welcome [on twitter](https://twitter.com/iwhitney/), [GitHub](https://github.com/IanWhitney/designisrefactoring) or ian@ianwhitney.com
 
