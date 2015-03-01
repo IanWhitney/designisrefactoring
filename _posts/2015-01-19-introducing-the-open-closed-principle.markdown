@@ -13,6 +13,8 @@ Another way of saying that is:
 
 > Adding new features should not require any changes to your existing features.
 
+<!--break-->
+
 But what does that mean in practice? Let's start with a simple example:
 
 ```

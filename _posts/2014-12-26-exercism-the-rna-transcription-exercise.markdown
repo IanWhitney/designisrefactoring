@@ -24,6 +24,8 @@ class Complement
 end
 ```
 
+<!--break-->
+
 (An aside: Did you know that Exercism has example solutions in [their Git repo](https://github.com/exercism/xruby/blob/master/rna-transcription/example.rb)? I did not. I was wondering why 40% of people's solutions looked exactly the same. Copying and pasting ain't learning, folks)
 
 <!--more-->

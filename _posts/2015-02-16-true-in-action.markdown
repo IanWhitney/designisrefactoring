@@ -10,6 +10,8 @@ Sandi, along with [Katrina Owen](https://twitter.com/kytrinyx), is working on a 
 
 Just hacking code together, I ended up with this solution.
 
+<!--break-->
+
 {% highlight ruby %}
 class BeerSong
   def verses(first_verse, last_verse)

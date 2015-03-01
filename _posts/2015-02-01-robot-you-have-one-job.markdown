@@ -7,6 +7,8 @@ Here's a little glimpse behind the _Design is Refactoring_ curtain--I have no id
 
 Instead, my usual approach is to start a new [Exercism.io](http://exercism.io/) problem, solve it in a terrible way (terrible code being my default) and then stare at it for a long time until I figure out some design concept I can illustrate with it.
 
+<!--break-->
+
 After I implemented a solution for [this week's problem](https://github.com/exercism/x-common/blob/master/robot-name.md), I was left with:
 
 {% highlight ruby %}

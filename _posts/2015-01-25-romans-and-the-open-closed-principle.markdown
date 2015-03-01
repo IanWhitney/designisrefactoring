@@ -8,6 +8,8 @@ date: 2015-01-25T20:05:34-06:00
 
 The Exercism [problem description](https://github.com/exercism/x-common/blob/master/roman-numerals.md) is simple enough. Their [example solution](https://github.com/exercism/xruby/blob/master/roman-numerals/example.rb) is one way to go about it. In my typical fashion I wrote something way longer and full of duplication.
 
+<!--break-->
+
 {% highlight ruby %}
 class Fixnum
   def to_roman

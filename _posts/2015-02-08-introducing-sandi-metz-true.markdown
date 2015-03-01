@@ -15,6 +15,8 @@ TRUE is an acronym that stands for:
 
 If code meets those four criteria then it is well designed. Let's dig into each element and find out what they mean.
 
+<!--break-->
+
 ### Transparent
 
 #### It is easy to see the code's function and the effect of a change

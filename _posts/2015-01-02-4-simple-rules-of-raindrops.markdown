@@ -28,6 +28,8 @@ The code works, but then I decide to add two new features.
 1. The ability to make different noises
 2. The ability to have different noise-making criteria (i.e., even/odd instead of prime factors)
 
+<!--break-->
+
 Time to refactor! I don't want to just jump in and add the features. That way lies confusion. Instead, I want to keep the code's current functionality while changing its design until introducing the new features is trivial. [Kent Beck said this more succinctly](https://twitter.com/kentbeck/status/250733358307500032).
 
 > For each desired change, make the change easy (warning: this may be hard), then make the easy change

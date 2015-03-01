@@ -16,6 +16,16 @@ header-img: "img/home-bg.jpg"
         </h3>
         {% endif %}
     </a>
+    {{ post.excerpt }}
+    {% capture content_words %}
+      {{ post.content | number_of_words }}
+    {% endcapture %}
+    {% capture excerpt_words %}
+      {{ post.excerpt | number_of_words }}
+    {% endcapture %}
+    {% if excerpt_words != content_words %}
+      <a href="{{ post.url }}/#read-more">Read More</a>
+    {% endif %} 
     <p class="post-meta">Posted by {{ post.author }} on {{ post.date | date: "%B %-d, %Y" }}</p>
 </div>
 <hr>

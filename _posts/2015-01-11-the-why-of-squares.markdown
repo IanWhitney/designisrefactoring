@@ -32,6 +32,8 @@ end
 
 And let's hit it with some refactoring techniques that we covered in [last week's post](/2015/01/05/4-simple-rules-of-raindrops/): Extract Class and Extract Method. I'm going to speed through some of these things like a TV chef so that we can get to the point.
 
+<!--break-->
+
 - Extract a `Nums` class to handle the creation of the number enumerator [(commit)](https://github.com/IanWhitney/exercism_squares/blob/7c90271c0c3ad0feec3578dcbe183bcebc26789f/squares.rb)
 - Extract a `calculate` method to remove duplication between our two methods [(commit)](https://github.com/IanWhitney/exercism_squares/blob/9b61d9ff1d0f36f4933ebaee40efee2021c37a3f/squares.rb)
 - Extract a `Calculator` module since that logic doesn't seem right in Squares [(commit)](https://github.com/IanWhitney/exercism_squares/blob/6a018e54e09bf2a9cfb91513f1b16076809fbfcd/squares.rb)
