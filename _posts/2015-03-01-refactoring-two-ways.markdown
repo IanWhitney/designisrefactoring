@@ -4,7 +4,7 @@ title: "Refactoring: Two Ways"
 date: 2015-03-01T13:50:20-06:00
 ---
 
-I've spent the last few posts talking about design heuristics. In this week's post I'm going to return to the Refactoring part of _Design is Refactoring_ by showing two approaches you can take when following Extract Class.
+I've spent the last few posts talking about design heuristics. In this week's post I'm going to return to the Refactoring part of _Design is Refactoring_ by showing two approaches you can take when applying the Extract Class refactoring.
 
 The first approach is dangerous, unpredictable and painful. The second approach is safe, guaranteed and painless. Surprisingly, it seems that most programmers follow the first approach.
 
@@ -86,7 +86,7 @@ class TelephonNumber
 end
 {% endhighlight ruby %}
 
-In one fell swoop I copy type out the new class, delete the old code and save it.
+In one fell swoop I type out the new class, delete the old code and save it.
 
 Step 3: Run the tests, see them fail.
 
@@ -116,7 +116,7 @@ end
 
 We start off the same way. We look at the code and see that we want to extract a TelephoneNumber.
 
-Step 2: Add a single change.
+Step 2: Make a single change.
 
 {% highlight ruby %}
 class Person
