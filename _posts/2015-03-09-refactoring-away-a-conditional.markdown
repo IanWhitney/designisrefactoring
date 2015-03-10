@@ -8,6 +8,8 @@ Conditionals! No one likes them. They look innocent enough to start, but they at
 
 Fowler's _Refactoring_ offers a lot of ways of removing conditionals, but using Ruby gives us options that he did not have. So, instead of focusing on one of Fowler's patterns this week, I'm going to focus on one I use.
 
+<!--break-->
+
 Let's take a simple problem,
 
 > Bob answers 'Sure.' if you ask him a question.
