@@ -10,7 +10,7 @@ As you might have guessed this section discusses patterns about, well, organizin
 
 <!--break-->
 
-I'm going to start off the first pattern of the section, which also seems to be the most lightweight: Self Encapsulate Field. I picked this one not because it's anything earth-shattering, but because code that doesn't do it drives me a little bit crazy. 
+I'm going to start off with the first pattern in the section, which also seems to be the most lightweight: Self Encapsulate Field. I picked this one not because it's anything earth-shattering, but because code that doesn't do it drives me a little bit crazy.
 
 As an example, here's some code that surely looks familiar.
 
