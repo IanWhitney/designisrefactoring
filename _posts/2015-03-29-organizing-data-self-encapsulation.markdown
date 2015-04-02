@@ -121,7 +121,7 @@ class Doctor < Person
 end
 
 Doctor.new("marcus", "Welby").full_name
-#=> "Dr. Marcus Welby"
+#=> "Dr. marcus Welby"
 {% endhighlight %}
 
 Because you are human you have created a `first_name` getter and yet you are still using the instance variable `@first_name` in `full_name`. Their implementations differ and you find yourself in Bug Town. Note that I'm making a big assumption here: that you are human. I know! This might be crazy. But play along with me. You didn't create this bug this because you are dumb, or because you are a bad programmer, this is just a simple mistake that humans make.
