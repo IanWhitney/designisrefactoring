@@ -82,7 +82,7 @@ end
 ReferenceCustomer.new(name: "Ian Whitney").change_name_to("Mr. Stinkypants")
 {% endhighlight ruby %}
 
-Being unable to update our Customers seems great, but being unable to compare Customers seems of dubious value. However, this is definitely the road Fowler wants us to follow. Let's roll with it and see where it goes.
+Being able to update our Customers seems great, but being unable to compare Customers seems of dubious value. However, this is definitely the road Fowler wants us to follow. Let's roll with it and see where it goes.
 
 Now that we know what a Reference object is we can follow the steps of the Replace Value with Reference pattern. First is "Replace constructor with Factory Method".
 
