@@ -8,6 +8,8 @@ In two previous posts -- [Replace Data Value with Object](http://designisrefacto
 
 This week it's time to look at Arrays and Hashes. You will probably not be shocked to learn that these structures are about as useful as strings when it comes to application behavior. Sure, you can use them more successfully than strings. But as soon as any complexity rears its head, you should refactor them into 'real' objects.
 
+<!--break-->
+
 This all comes down to a code smell that I quickly glossed over in an [earlier newsletter](http://tinyletter.com/ianwhitney/letters/not-very-much-about-primitives), Primitive Obsession. Defined as "[using primitive data types to represent domain ideas](http://c2.com/cgi/wiki?PrimitiveObsession)", you'll see Primitive Obsession everywhere once you start looking for it. Options being parsed out of an array by position, hashes being used to configure objects, strings being parsed via regex, and so on. That doesn't mean that primitives are bad; we certainly need strings, arrays and the like. But as soon as you find yourself putting any sort of behavior in one a "Primitive Obsession!" alarm should go off in your head and you should extract that code into a class.
 
 Arrays and Hashes are frequently the focus of Primitive Obsession because they hide the problem so well. They are super convenient ways to pass around collections of data, they have so many convenient methods, and with hashes it's almost like you're using a real class. Especially if you're using [Hashie::Mash](https://github.com/intridea/hashie#mash).
