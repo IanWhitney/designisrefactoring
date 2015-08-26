@@ -8,6 +8,8 @@ In my [last post](http://designisrefactoring.com/2015/08/03/the-power-of-drafts/
 
 Just as a writer doesn't randomly change words and call the result a Second Draft, we can't improve our code by just randomly tweaking things and pushing it to GitHub. Your commit log can be endlessly long and the code might still be a First Draft. So, how do we actually move from First Draft to Second? How do we build upon the bones of our drafts, each new layer better than the ones beneath?
 
+<!--break-->
+
 I quickly mentioned a process in my last post, but didn't discuss it in any depth. Here it is again:
 
 1. Start with a vague idea
