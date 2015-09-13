@@ -21,17 +21,22 @@ Invariably I then need to watch a single magician, which I can only do like so
 watch_magicians([ricky_jay])
 ```
 
-Which seems unnecessary in a language like Ruby. If I were using type-checked language then I would be required to pass an array into `watch_magicians`. But no such requirement exists in Ruby, so why shouldn't I be able to write code like this?
+Which seems unnecessary in a language like Ruby. If I were using type-checked language then I would write `watch_magicians` to require an Array. But no such requirement exists in Ruby, so why shouldn't `watch_magicians` be able to work like this?
 
 ```ruby
+# with a collection
+watch_magicians([henning, houdini])
+
+# with just one magician
 watch_magicians(jillete)
-# or
+
+# with no magicians
 watch_magicians(nil)
 ```
 
 <!--break-->
 
-This is why the splat operator `*` exists, right? Let's play with a little demonstration method.
+My first thought is that this is why the splat operator `*` exists, right? Let's play with a little demonstration method.
 
 ```ruby
 def demo(*items)
@@ -150,7 +155,7 @@ def watch_magicians(magicians = nil)
 end
 ```
 
-Of course we have tests for this method. And they use a little test double Struct:
+Of course we have tests for this method. And they use a little Struct as a test double:
 
 ```ruby
 Magician = Struct.new(:magical_phrase)
@@ -213,15 +218,29 @@ Magician.new("Alakazam!").to_a
 
 Well. That's unexpected.
 
+The quick lesson here, the one you can use to show off your sweet Ruby knowledge amongst your friends, is that Struct has a surprising implementation of `to_a`.
+
 The slightly deeper lesson to learn is that `Kernel.Array` is great, until you pass it something that responds to `to_ary` or `to_a` in an unexpected way.
 
-The design lesson is that making methods that can handle _any_ input is probably a waste of time and a likely source of bugs.
+Underneath that is the design lesson: making methods that can handle _any_ input is likely a waste of time and a source of bugs. That was certainly the case with the code I was working on this week.
 
-The final lesson, the real lesson, is that flexibility like Ruby's is a double-edged sword. As powerful, and fun and fantastic as dynamic typing is, it can cut you in goofy ways. When your programmer friends start raving about how awesome strong typing is, it's because they never have to worry about weirdness like this.
+The deepest lesson, the real lesson, is that flexibility like Ruby's is a double-edged sword. As powerful, and fun and fantastic as dynamic typing is, it can cut you in goofy ways. When your programmer friends start raving about how awesome strong typing is, it's because they never have to worry about weirdness like this.
 
 Maybe I should re-double my efforts to learn Haskell.
 
-> side note -- the apparently undocumented behavior of `Kernel.Array` when an object doesn't respond to **either** `to_ary` or `to_a` is to simply return that object as the only element of a new array. So the integer `1`, which doesn't respond to either of those methods, is returned as `[1]` by `Kernel.Array`)
+_postscript_: the apparently undocumented behavior of `Kernel.Array` when an object doesn't respond to **either** `to_ary` or `to_a` is to simply return that object as the only element of a new array. Such as:
 
-The quick lesson here, the one you can use to show off your sweet Ruby knowledge amongst your friends, is that Struct has a surprising implementation of `to_a`.
+```ruby
+1.respond_to?(:to_ary)
+#=> false
+1.respond_to?(:to_a)
+#=> false
+Array(1)
+#=> [1]
+```
 
+---
+
+Though this post is not related to my talk, I'm still plugging away on a presentation for [Rocky Mountain Ruby](http://rockymtnruby.com). I'd love to see you there! Tweet or email at me if you'll be at the conference or just want to hang out in Boulder.
+
+Writing the presentation has curtailed my blogging and newsletter-ing a bit; sorry about that. You can read [previous newsletters](http://tinyletter.com/ianwhitney/archive), or [sign up for free](http://tinyletter.com/ianwhitney/). Comments/feedback/&c. welcome [on twitter](https://twitter.com/iwhitney/), at ian@ianwhitney.com, or [leave comments on the pull request for this post](https://github.com/IanWhitney/designisrefactoring/pull/8).
