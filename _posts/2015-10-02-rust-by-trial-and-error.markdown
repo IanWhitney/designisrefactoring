@@ -271,7 +271,7 @@ end
 
 In Ruby a instance method automatically has access to `self`. [Rust methods don't](https://doc.rust-lang.org/stable/book/method-syntax.html). I'm fuzzy on this point, but here's what I think is going on. In the Ruby code `year.is_leap?`, `year` is the receiver of the `is_leap?` method call. Inside the method the receiver can be accessed by using `self` (or leaving `self` off entirely, in most cases).
 
-But because of Rust's focus on proper memory management, we have to tell the method how it's going to use the receiver so that it can properly handl the memory. Is it a reference, a value or a mutable reference. I'll be honest. I don't quite understand what that means. And I might be totally wrong about all of it! But `&self` is the most common way of providing self, so that's what I'm doing.
+But because of Rust's focus on proper memory management, we have to tell the method how it's going to use the receiver so that it can properly handle the memory. Is it a reference, a value or a mutable reference. I'll be honest. I don't quite understand what that means. And I might be totally wrong about all of it! But `&self` is the most common way of providing self, so that's what I'm doing.
 
 Now that Year has this behavior, we can change our `is_leap_year` function to use it.
 
