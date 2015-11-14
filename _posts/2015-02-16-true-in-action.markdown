@@ -2,6 +2,7 @@
 layout: post
 title: "Sandi Metz's TRUE in Action"
 date: 2015-02-16T12:32:45-06:00
+author: Ian Whitney
 ---
 
 [Last week](http://designisrefactoring.com/2015/02/08/introducing-sandi-metz-true/) I introduced [Sandi Metz](http://www.sandimetz.com)'s TRUE heuristic and promised that this week we'd see in in action<sup>[\*](#action)</sup>. Let's jump right in.

@@ -2,6 +2,7 @@
 layout: post
 title: "The Power of Drafts"
 date: 2015-08-03T19:46:41-05:00
+author: Ian Whitney
 ---
 
 How do you write code? I'm not asking about text editor, language or keyboard layout. I'm talking more about your process. Do you write a bunch of perfect code all at once? Or do you write some terrible code, which you rewrite into less-terrible code?

@@ -2,6 +2,7 @@
 layout: post
 title: "Building on the bones of your drafts"
 date: 2015-08-25T20:06:47-05:00
+author: Ian Whitney
 ---
 
 In my [last post](http://designisrefactoring.com/2015/08/03/the-power-of-drafts/) I talked about how our rough drafts have the power to reveal our humanity and our learning processes. But I never talked about how we actually _improve_ our code, how we can build on our flawed early implementations and make them better.

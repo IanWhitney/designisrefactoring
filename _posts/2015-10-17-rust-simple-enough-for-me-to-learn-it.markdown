@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Rust Simple Enough for Me to Learn It"
+author: Ian Whitney
 date: 2015-10-17T08:49:21-05:00
 ---
 

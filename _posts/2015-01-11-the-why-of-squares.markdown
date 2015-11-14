@@ -2,6 +2,7 @@
 layout: post
 title: "The Intention of Squares"
 date: 2015-01-11T12:57:44-06:00
+author: Ian Whitney
 ---
 
 Let's start off with some code. This solves the [Squares exercise](https://github.com/exercism/x-common/blob/master/difference-of-squares.yml) on [Exercism](http://exercism.io).

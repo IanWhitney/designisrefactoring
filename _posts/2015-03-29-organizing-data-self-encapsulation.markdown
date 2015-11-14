@@ -2,6 +2,7 @@
 layout: post
 title: "Organizing Data: Self Encapsulation"
 date: 2015-03-29T22:08:39-05:00
+author: Ian Whitney
 ---
 
 True to [my promise](http://designisrefactoring.com/2015/03/15/conditionals-style-and-design/) we won't be talking about Bob or conditionals this week. I am as excited about this as you are! Instead I'm going to turn to a section of _Refactoring_ that always intrigues me and that I haven't discussed much so far: Organizing Data.

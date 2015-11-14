@@ -2,6 +2,7 @@
 layout: post
 title: "Introducing Sandi Metz's TRUE"
 date: 2015-02-08T20:01:01-06:00
+author: Ian Whitney
 ---
 
 In previous posts I've mentioned [Sandi Metz](http://www.sandimetz.com/)'s **TRUE** heuristic for judging code quality, but I've never delivered on my promise to really dive into it. This week I'll finally start that dive.

@@ -2,6 +2,7 @@
 layout: post
 title: "Robot, You Have One Job"
 date: 2015-02-01T13:34:09-06:00
+author: Ian Whitney
 ---
 Here's a little glimpse behind the _Design is Refactoring_ curtain--I have no idea what I'm doing. There's no grand plan of "First I'll introduce this concept, then expand on it, then build in complexity and then **voilà** my beautiful creation will be revealed to all!"
 

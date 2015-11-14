@@ -2,6 +2,7 @@
 layout: post
 title: "Organizing Data: Replace Data Value With Object"
 date: 2015-04-26T11:43:58-05:00
+author: Ian Whitney
 ---
 
 A busy few weeks as [my employer](http://www.umn.edu) finished their extensive upgrade of their PeopleSoft installation. With that done, let's get back to talking about refactoring.

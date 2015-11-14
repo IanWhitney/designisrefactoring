@@ -2,6 +2,7 @@
 layout: post
 title: "Encapsulate Enumerable to Avoid Embarrassment"
 date: 2015-07-19T20:59:49-05:00
+author: Ian Whitney
 ---
 
 Vacations and work pulled me away from this blog for a bit, though I did manage to get [a few newsletters out](http://tinyletter.com/ianwhitney/archive). But vacation time is over (for now) and it's time to hop back into the Organizing Data section of _Refactoring_.

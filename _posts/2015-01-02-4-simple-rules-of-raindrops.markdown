@@ -2,6 +2,7 @@
 layout: post
 title: "4 Simple Rules of Raindrops"
 date: 2015-01-05T08:00:00-06:00
+author: Ian Whitney
 ---
 
 After solving the [Raindrops problem](https://github.com/exercism/x-common/blob/master/raindrops.md) in Exercism, I have this code:

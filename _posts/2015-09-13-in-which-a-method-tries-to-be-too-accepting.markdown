@@ -2,6 +2,7 @@
 layout: post
 title: "In which a method tries to be too accepting"
 date: 2015-09-13T14:06:40-05:00
+author: Ian Whitney
 ---
 
 I frequently write methods like this:

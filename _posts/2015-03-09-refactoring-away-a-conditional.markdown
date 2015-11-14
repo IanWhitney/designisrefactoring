@@ -2,6 +2,7 @@
 layout: post
 title: "Refactoring away a conditional"
 date: 2015-03-09T19:27:10-05:00
+author: Ian Whitney
 ---
 
 Conditionals! No one likes them. They look innocent enough to start, but they attract more conditionals and grow into thorny nests of nested ifs. Blech-o! 

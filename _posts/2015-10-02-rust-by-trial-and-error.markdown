@@ -2,6 +2,7 @@
 layout: post
 title: "Rust by Trial and Error"
 date: 2015-10-02T13:02:22-05:00
+author: Ian Whitney
 ---
 
 At this year's [Rocky Mountain Ruby](http://rockymtnruby.com), I mentioned to [Steve Klabnik](http://www.steveklabnik.com) that I was trying (slowly) to learn [Rust](https://www.rust-lang.org). He encouraged me to blog about anything I managed to hack together, as the Rust community deserves the kind of enthusiastic blogging that so greatly helped the Ruby community. At the same conference a couple of people mentioned that they really liked my deep dives into [http://exercism.io](Exercism) problems.

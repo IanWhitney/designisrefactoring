@@ -2,6 +2,7 @@
 layout: post
 title: "Exercism: The RNA Transcription Exercise"
 date: 2014-12-26 12:35:35 -0600
+author: Ian Whitney
 comments: true
 categories: 
 ---

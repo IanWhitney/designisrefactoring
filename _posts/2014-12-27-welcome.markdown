@@ -2,6 +2,7 @@
 layout: post
 title: "Welcome!"
 date: 2014-12-27T15:23:12-06:00
+author: Ian Whitney
 header-img: "img/home-bg.jpg"
 ---
 I spend a lot of time thinking about how to improve the design of my code. But, despite all that thinking, my initial coding attempts always have significant design problems. Yours probably do too. There are a lot of programmers out there better than me, but I don't think any of them are happy with their first drafts.

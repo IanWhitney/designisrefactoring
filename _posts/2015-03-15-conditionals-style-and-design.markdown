@@ -2,6 +2,7 @@
 layout: post
 title: "Conditionals: Style and Design"
 date: 2015-03-15T10:17:43-05:00
+author: Ian Whitney
 ---
 
 Wow! Last week's post got quite a lot of attention. [Ruby Weekly](http://rubyweekly.com/issues/237), a long comment thread on [my Gist](https://gist.github.com/IanWhitney/5e2f3ff7099768f3cf40), numerous Twitter conversations, [2 threads](http://www.reddit.com/r/ruby/comments/2ywf6p/refactoring_away_a_conditional/) [on Reddit](http://www.reddit.com/r/ruby/comments/2yv2le/refactoring_away_a_conditional/) and who knows what else. Considering that I do the bare minimum of publicity for this site, it was all quite surprising.

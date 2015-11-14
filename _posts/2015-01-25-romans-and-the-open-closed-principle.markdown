@@ -2,6 +2,7 @@
 layout: post
 title: "Romans and the Open/Closed Principle"
 date: 2015-01-25T20:05:34-06:00
+author: Ian Whitney
 ---
 
 [Last week I introduced the Open/Closed Principle](http://designisrefactoring.com/2015/01/19/introducing-the-open-closed-principle/), this week let's see in in action. I'm going to warn you right off, this week's code gets kind of ridiculous. It is the ne plus ultra of contrived examples.

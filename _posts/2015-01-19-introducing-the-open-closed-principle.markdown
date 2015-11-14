@@ -2,6 +2,7 @@
 layout: post
 title: "An Introduction to the Open/Closed Principle"
 date: 2015-01-19T20:02:30-06:00
+author: Ian Whitney
 ---
 In [last week's newsletter](http://tinyletter.com/ianwhitney/letters/who-knew-that-squaring-numbers-could-be-so-fraught) I said that I'd be talking about polymorphism this week. I was wrong about that. Instead, we're going to talk about the [Open Closed Principle (OCP)](https://en.wikipedia.org/wiki/Open/closed_principle). We're also not going to get to an [Exercism](http://exercism.io/) problem this week. I'm want to really illustrate OCP<sup>[\*](#ocp)</sup> this week and next week we'll use it on an Exercism problem.
 

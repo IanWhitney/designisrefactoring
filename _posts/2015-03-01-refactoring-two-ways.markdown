@@ -2,6 +2,7 @@
 layout: post
 title: "Refactoring: Two Ways"
 date: 2015-03-01T13:50:20-06:00
+author: Ian Whitney
 ---
 
 I've spent the last few posts talking about design heuristics. In this week's post I'm going to return to the Refactoring part of _Design is Refactoring_ by showing two approaches you can take when applying the Extract Class refactoring.

@@ -2,6 +2,7 @@
 layout: post
 title: "So Long, Value Object. Hello, Reference"
 date: 2015-05-11T07:47:21-05:00
+author: Ian Whitney
 ---
 
 Maybe after my [last post](http://designisrefactoring.com/2015/04/26/organizing-data-replace-data-value-with-object/) you refactored your code and introduced a bunch of Value objects. And now, perhaps, the bloom is off the rose and you are realizing that Value objects were not the right solution. Value objects can be great, in the right situation. But in the wrong situation, of which there are many, Value objects are trouble. As immutable representations of simple data, Value objects can be powerful tools, but they aren't the block you build an application with.

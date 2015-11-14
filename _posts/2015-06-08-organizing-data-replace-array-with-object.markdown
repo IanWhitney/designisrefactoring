@@ -2,6 +2,7 @@
 layout: post
 title: "Organizing Data: Replace Array with Object"
 date: 2015-06-08T12:59:35-05:00
+author: Ian Whitney
 ---
 
 In two previous posts -- [Replace Data Value with Object](http://designisrefactoring.com/2015/04/26/organizing-data-replace-data-value-with-object/) and [So Long Value, Hello Reference](http://designisrefactoring.com/2015/05/11/so-long-value-object-hello-reference/) -- I illustrated ways of replacing string method parameters with something more useful: Value Objects and Reference Objects. The motivation for these refactorings was pretty simple -- strings are useless when it comes to storing application logic and objects are easy to create.
