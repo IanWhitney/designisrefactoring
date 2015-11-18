@@ -6,7 +6,7 @@ subtitle: "Arrays, Memory and the &"
 author: Ian Whitney
 ---
 
-[Last time](http://designisrefactoring.com/2015/10/17/rust-simple-enough-for-me-to-learn-it/) we wrote half of our `anagrams_for` function signature. We looked at the different ways we can declare a string, and how our function signature could declare string type it accepted. Exciting!
+[Last time](http://designisrefactoring.com/2015/10/17/rust-simple-enough-for-me-to-learn-it/) we wrote half of our `anagrams_for` function signature. We looked at the different ways we can declare a string, and how to decide which type our function would accept. Exciting!
 
 We have one more parameter to handle, though. The tests we have from Exercism have us calling `anagrams_for` like this:
 
