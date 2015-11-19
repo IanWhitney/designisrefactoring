@@ -6,6 +6,8 @@ baseurl: ""
 url: "http://designisrefactoring.com"
 twitter_username: iwhitney
 github_username:  IanWhitney
+collections:
+  - newsletters
 
 # Build settings
 markdown: kramdown
