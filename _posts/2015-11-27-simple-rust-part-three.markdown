@@ -3,6 +3,7 @@ layout: post
 title: "Simple Rust, Part Three"
 date: 2015-11-27T13:37:28-06:00
 subtitle: "Vectors, Mutations, Macros and Lifetimes"
+author: Ian Whitney
 ---
 
 [Previously](http://designisrefactoring.com/2015/11/13/simple-rust-part-two/), we looked at how our function will use Arrays and whether or not it will own or borrow its inputs. Our code currently looks like this:
