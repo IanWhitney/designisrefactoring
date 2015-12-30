@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'rust_playground_highlight', require: 'rust_playground_highlight'
+
 group :development do
   gem 'jekyll'
   gem 'rouge'

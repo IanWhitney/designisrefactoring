@@ -327,12 +327,13 @@ form .row:first-child .floating-label-form-group {
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
-  font-size: 14px;
+  /* font-size: 14px; */
   font-weight: 800;
-  letter-spacing: 1px;
-  border-radius: 0;
-  padding: 15px 25px;
+  /* letter-spacing: 1px; */
+  /* border-radius: 0; */
+  /* padding: 15px 25px; */
 }
+
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
@@ -398,4 +399,20 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #8b8967;
+}
+
+div.highlight {
+  position: relative;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #FDFDFD;
+}
+
+div.highlight a.playground {
+  position: absolute;
+  z-index: 10;
+  float: right;
+  right: 8px;
+  top: 8px;
+  outline: none;
 }
