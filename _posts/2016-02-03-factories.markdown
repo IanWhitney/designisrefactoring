@@ -398,7 +398,7 @@ With this change our `CAMPUS_LIKE` constant is populated with every class that c
 
 This approach is not foolproof, obviously. If we add a new class is added that should be campus-like but forget to implement the method, our factory will never build our new class. Alternatively, we could claim that a class is campus-like when it is not and our factory will return invalid objects. It doesn't matter which factory you pick, there is always a way to screw it up.
 
-Possibly worse, this factory also has the downside of being utterly baffling to newcomers to this code. Whatever its faults, the case statement we started off with was easy to understand. And compare that the code we have now:
+Possibly worse, this factory also has the downside of being utterly baffling to newcomers to this code. Whatever its faults, the case statement we started off with was easy to understand. And compare that to the code we have now:
 
 {% highlight ruby %}
 class UMNTC
