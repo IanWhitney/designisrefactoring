@@ -348,7 +348,7 @@ class CollegeInTheSchools < Campus
 end
 {% endhighlight %}
 
-There are a bunch of other ways in which this class is not Campus-like, but I'll leave those to your imagination. The relevant point here is that our inheritance approach can break down. `CollegeInTheSchools` is campus-like enough to satisfy our factory (since it responds to both `name` and `mascot'), but it's not campus-like enough that it should inherit from our `Campus` class. However our factory demands that all campus-like classes inherit from `Campus`.
+There are a bunch of other ways in which this class is not Campus-like, but I'll leave those to your imagination. The relevant point here is that our inheritance approach can break down. `CollegeInTheSchools` is campus-like enough to satisfy our factory (since it responds to both `name` and `mascot`), but it's not campus-like enough that it should inherit from our `Campus` class. However our factory demands that all campus-like classes inherit from `Campus`.
 
 This is a pickle.
 
