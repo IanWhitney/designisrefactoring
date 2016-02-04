@@ -318,7 +318,7 @@ class CampusDetails
   private
 
   def build_campus(abbreviation)
-    Campus.subclasses.detect(->{UnknownCampus.new}) { |campus_class| campus_class.handles?(abbreviation)}.new
+    Campus.subclasses.detect(->{UnknownCampus}) { |campus_class| campus_class.handles?(abbreviation)}.new
   end
 end
 {% endhighlight %}
@@ -366,7 +366,7 @@ class CampusDetails
   private
 
   def build_campus(abbreviation)
-    CAMPUS_LIKE.detect(->{UnknownCampus.new}) { |campus_class| campus_class.handles?(abbreviation)}.new
+    CAMPUS_LIKE.detect(->{UnknownCampus}) { |campus_class| campus_class.handles?(abbreviation)}.new
   end
 end
 {% endhighlight %}
@@ -517,7 +517,7 @@ class CampusDetails
   private
 
   def build_campus(abbreviation)
-    CAMPUS_LIKE.detect(->{UnknownCampus.new}) { |campus_class| campus_class.handles?(abbreviation)}.new
+    CAMPUS_LIKE.detect(->{UnknownCampus}) { |campus_class| campus_class.handles?(abbreviation)}.new
   end
 end
 {% endhighlight %}
