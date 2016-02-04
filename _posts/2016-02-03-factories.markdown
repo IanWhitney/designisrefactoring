@@ -222,25 +222,25 @@ class Campus
   end
 end
 
-class UMNTC
+class UMNTC < Campus
   def self.handles?(abbreviation)
     abbreviation == "UMNTC"
   end
 end
 
-class UMNMO
+class UMNMO < Campus
   def self.handles?(abbreviation)
     abbreviation == "UMNMO"
   end
 end
 
-class UMNCR
+class UMNCR < Campus
   def self.handles?(abbreviation)
     abbreviation == "UMNCR"
   end
 end
 
-class UnknownCampus
+class UnknownCampus < Campus
   def self.handles?(_)
     true
   end
