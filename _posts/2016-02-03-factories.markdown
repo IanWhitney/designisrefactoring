@@ -334,7 +334,7 @@ And then someone decides to implement "College in the Schools" which teaches col
 {% highlight ruby %}
 class CollegeInTheSchools < Campus
   def self.handles?(abbreviation)
-    abbreviation = "CITS"
+    abbreviation == "CITS"
   end
 
   def name
@@ -407,7 +407,7 @@ class UMNTC
   end
 
   def self.handles?(abbreviation)
-    abbreviation = "UMNTC"
+    abbreviation == "UMNTC"
   end
 
   def name 
@@ -425,7 +425,7 @@ class UMNMO
   end
 
   def self.handles?(abbreviation)
-    abbreviation = "UMNMO"
+    abbreviation == "UMNMO"
   end
 
   def name 
@@ -443,7 +443,7 @@ class UMNCR
   end
 
   def self.handles?(abbreviation)
-    abbreviation = "UMNCR"
+    abbreviation == "UMNCR"
   end
 
   def name 
@@ -461,7 +461,7 @@ class UMNTCRO
   end
 
   def self.handles?(abbreviation)
-    abbreviation = "UMNTCRO"
+    abbreviation == "UMNTCRO"
   end
 
   def name 
@@ -479,7 +479,7 @@ class CollegeInTheSchools
   end
 
   def self.handles?(abbreviation)
-    abbreviation = "CITS"
+    abbreviation == "CITS"
   end
 
   def name
