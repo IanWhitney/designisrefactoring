@@ -92,7 +92,7 @@ end
 class UMNTC
   def name 
     "University of Minnesota Twin Cities"
-  def
+  end
 
   def mascot
     "Gopher"
@@ -102,7 +102,7 @@ end
 class UMNMO
   def name 
     "University of Minnesota Morris"
-  def
+  end
 
   def mascot
     "Cougar"
@@ -112,7 +112,7 @@ end
 class UnknownCampus
   def name 
     "Unknown Campus"
-  def
+  end
 
   def mascot
     "Unknown Mascot"
@@ -130,7 +130,7 @@ Then along comes a new campus -- University of Minnesota Crookston (mascot: Gold
 class UMNCR
   def name 
     "University of Minnesota Crookston"
-  def
+  end
 
   def mascot
     "Golden Eagle"
@@ -412,7 +412,7 @@ class UMNTC
 
   def name 
     "University of Minnesota Twin Cities"
-  def
+  end
 
   def mascot
     "Gopher"
@@ -430,7 +430,7 @@ class UMNMO
 
   def name 
     "University of Minnesota Morris"
-  def
+  end
 
   def mascot
     "Cougar"
@@ -448,7 +448,7 @@ class UMNCR
 
   def name 
     "University of Minnesota Crookston"
-  def
+  end
 
   def mascot
     "Golden Eagle"
@@ -466,7 +466,7 @@ class UMNTCRO
 
   def name 
     "University of Minnesota Rochester"
-  def
+  end
 
   def mascot
     "Raptor"
@@ -494,7 +494,7 @@ end
 class UnknownCampus
   def name 
     "Unknown Campus"
-  def
+  end
 
   def mascot
     "Unknown Mascot"
