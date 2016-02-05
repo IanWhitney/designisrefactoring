@@ -20,7 +20,7 @@ class CampusDetails
     case abbreviation
     when "UMNTC"
       "University of Minnesota Twin Cities"
-    when "UMNMO" 
+    when "UMNMO"
       "University of Minnesota Morris"
     else
       "Unknown Campus"
@@ -41,7 +41,7 @@ class CampusDetails
     case abbreviation
     when "UMNTC"
       "University of Minnesota Twin Cities"
-    when "UMNMO" 
+    when "UMNMO"
       "University of Minnesota Morris"
     else
       "Unknown Campus"
@@ -52,7 +52,7 @@ class CampusDetails
     case abbreviation
     when "UMNTC"
       "Gopher"
-    when "UMNMO" 
+    when "UMNMO"
       "Cougar"
     else
       "Unknown Mascot"
@@ -90,7 +90,7 @@ class CampusDetails
 end
 
 class UMNTC
-  def name 
+  def name
     "University of Minnesota Twin Cities"
   def
 
@@ -100,7 +100,7 @@ class UMNTC
 end
 
 class UMNMO
-  def name 
+  def name
     "University of Minnesota Morris"
   def
 
@@ -110,7 +110,7 @@ class UMNMO
 end
 
 class UnknownCampus
-  def name 
+  def name
     "Unknown Campus"
   def
 
@@ -128,7 +128,7 @@ Then along comes a new campus -- University of Minnesota Crookston (mascot: Gold
 # previous code sample is unchanged
 
 class UMNCR
-  def name 
+  def name
     "University of Minnesota Crookston"
   def
 
@@ -300,7 +300,7 @@ We can get around this a few different ways. One is to take UnknownCampus out of
 
 {% highlight ruby %}
 class UnknownCampus
-  def name 
+  def name
     "Unknown Campus"
   def
 
@@ -389,7 +389,7 @@ end
 Then we could change `CAMPUS_LIKE` to be a bit more dynamic:
 
 {% highlight ruby %}
-CAMPUS_LIKE = ObjectSpace.each_object(Class).select do |klass| 
+CAMPUS_LIKE = ObjectSpace.each_object(Class).select do |klass|
   klass.respond_to?(:campus_like?) && klass.campus_like?
 end
 {% endhighlight %}
@@ -410,7 +410,7 @@ class UMNTC
     abbreviation = "UMNTC"
   end
 
-  def name 
+  def name
     "University of Minnesota Twin Cities"
   def
 
@@ -428,7 +428,7 @@ class UMNMO
     abbreviation = "UMNMO"
   end
 
-  def name 
+  def name
     "University of Minnesota Morris"
   def
 
@@ -446,7 +446,7 @@ class UMNCR
     abbreviation = "UMNCR"
   end
 
-  def name 
+  def name
     "University of Minnesota Crookston"
   def
 
@@ -464,7 +464,7 @@ class UMNTCRO
     abbreviation = "UMNTCRO"
   end
 
-  def name 
+  def name
     "University of Minnesota Rochester"
   def
 
@@ -492,7 +492,7 @@ class CollegeInTheSchools
 end
 
 class UnknownCampus
-  def name 
+  def name
     "Unknown Campus"
   def
 
@@ -501,7 +501,7 @@ class UnknownCampus
   end
 end
 
-CAMPUS_LIKE = ObjectSpace.each_object(Class).select do |klass| 
+CAMPUS_LIKE = ObjectSpace.each_object(Class).select do |klass|
   klass.respond_to?(:campus_like?) && klass.campus_like?
 end
 
