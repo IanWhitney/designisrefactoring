@@ -40,7 +40,6 @@ A digression. When Rust says it values "memory safety", it is saying that it wil
 - You try to use the 5th element of a 2-element array
 - You try to call a method on Nil
 - Two functions mutate a variable at the same time, leaving it an uncertain state
-- You forget to free some memory
 
 In Ruby you might get an exception, but in a language like C you'll get something worse. Maybe your program crashes. Maybe it executes some random code and your little C program opens a giant security bug that a virus exploits. Oops.
 
