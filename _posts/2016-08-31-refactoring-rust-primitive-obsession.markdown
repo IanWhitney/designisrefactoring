@@ -136,7 +136,9 @@ impl IntoIterator for Brackets {
     self.input.chars().collect::<Vec<char>>().into_iter()
   }
 }
-//Note: I mostly copied this code from The Book; there may be a better way of implementing this Trait for Brackets
+// Note: I mostly copied this code from The Book; there may be a better way of implementing this Trait for Brackets.
+// Update: Ms2ger showed me how to implement this without a vector:
+//   https://github.com/IanWhitney/designisrefactoring/pull/22#discussion_r77125688
 ```
 
 With this done, we can use `Brackets` throughout `are_balanced`
