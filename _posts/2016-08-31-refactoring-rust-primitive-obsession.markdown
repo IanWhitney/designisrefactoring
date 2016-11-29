@@ -3,6 +3,7 @@ layout: post
 title: "Refactoring Rust: Primitive Obsession"
 date: 2016-08-31T15:55:51-05:00
 subtitle: "Fast smelly code is still smelly"
+author: "Ian Whitney"
 ---
 
 Thanks to their small, focused nature problems in [Exercism](http://exercism.io) tend to focus on language primitives. Transform this string into a different string, manipulate this number, etc. In the `bob` exercise students [return a string based upon a string input](https://github.com/exercism/xrust/blob/717a20fd2ee34ad5c49904dca2726da07f133733/exercises/bob/example.rs). And in `leap` students [return a boolean based on an integer input](https://github.com/exercism/xrust/blob/717a20fd2ee34ad5c49904dca2726da07f133733/exercises/leap/tests/leap.rs).
