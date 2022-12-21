@@ -1,10 +1,12 @@
 source "https://rubygems.org"
 
-gem 'rust_playground_highlight', require: 'rust_playground_highlight'
+source "https://rubygems.org" do
+  gem "jekyll"
+  gem "minima", "~> 2.5"
+  gem "webrick"
 
-group :development do
-  gem 'jekyll'
-  gem 'rouge'
-  gem 'octopress', "3.0.0.rc.34"
-  gem 'octopress-deploy'
+  group :jekyll_plugins do
+    gem "github-pages", "~> 227"
+    gem "jekyll-feed", "~> 0.12"
+  end
 end

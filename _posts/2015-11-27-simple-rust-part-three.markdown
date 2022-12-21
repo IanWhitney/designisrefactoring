@@ -181,7 +181,7 @@ So, let me take you on a journey into my understanding of Rust lifetimes. I'm go
 
 Let's start with something very, very basic. A function that returns a string:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn return_string() -> &str {
   return "Hi!";
 }
@@ -189,7 +189,7 @@ fn return_string() -> &str {
 fn main() {
   let x = return_string();
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 This code looks simple enough, but it fails to compile, giving us the exact same error we saw before: E0106
 
@@ -199,7 +199,7 @@ The error goes on:
 
 Interesting! What this tells me is that if a function returns a borrowed value (`&str`), then it must accept a borrowed value in its parameters. Why? I think it all comes down to what everything comes down to in Rust -- memory. Take a look at this code:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let x;
 
@@ -210,13 +210,13 @@ fn main() {
 
   println!("{}",x);
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Again, seems simple enough but it won't compile. You get the error "y does not live long enough."
 
 In all my Rust ramblings I haven't talked much about scope, probably because I don't fully understand it. But, at a high level, anything within curly-braces is a scope. And when a scope ends, Rust cleans up memory used by that scope. And if that cleanup is going to make your program break, then Rust won't compile. Some comments will hopefully make this more clear.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let x; //x comes into scope
 
@@ -227,11 +227,11 @@ fn main() {
 
   println!("{}",x);
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 When I said that curly braces start a new scope, I meant all curly braces. From what I can tell, there's no difference between the curly braces in these two examples and, say, the curly braces that surround a function.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn return_borrowed_value() -> &str { //a new scope begins
   let y = "A string"; //y comes into scope
   return y; //x borrows y's reference
@@ -243,11 +243,11 @@ fn main() {
   println!("{}", x);
 }
 //=> E0106
-{% endrp_highlight %}
+{% endhighlight %}
 
 Hence, if a function returns something borrowed, it must accept a borrowed parameter. This way Rust knows that the reference will exist outside of the function's scope. (I don't think this is strictly true, but it's true enough)
 
-{% rp_highlight rust playground_id=71eb3d0f15282bc8153e %}
+{% highlight rust playground_id=71eb3d0f15282bc8153e %}
 fn return_borrowed_value(s: &str) -> &str { //a new scope begins
   return s;
 } //s is destroyed, but it was a reference to something that exists outside this function anyway. no big deal.
@@ -258,7 +258,7 @@ fn main() {
   println!("{}", x);
 }
 //=> "Hi!"
-{% endrp_highlight %}
+{% endhighlight %}
 
 But our function accepts borrowed parameters, so why won't it compile? The answer is still memory. In a one-arity function like in the previous example, Rust doesn't have to guess which borrowed parameter to return -- there's one option. But if a function borrows two parameters, Rust does have to guess. And if we force Rust to guess, it refuses to compile. Rust is not a fan of guessing. We need to explicitly tell Rust which reference our function will return.
 
