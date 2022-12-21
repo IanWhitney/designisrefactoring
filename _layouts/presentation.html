@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<ul>
+  <li><a href="{{ page.slides }}">Slides</a></li>
+  <li><a href="https://www.youtube.com/watch?v={{ page.video_id }}">Video</a></li>
+</ul>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{ page.video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
