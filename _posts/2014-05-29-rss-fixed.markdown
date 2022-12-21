@@ -1,0 +1,8 @@
+---
+layout: post
+title: "RSS Fixed"
+date: 2014-05-29 21:49:23 -0500
+comments: true
+categories: 
+---
+If you had tried to get to this site through an RSS feed, you probably encountered some problems. Should be fixed now. Sorry about that.

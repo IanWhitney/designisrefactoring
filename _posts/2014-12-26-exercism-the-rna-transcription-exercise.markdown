@@ -2,7 +2,6 @@
 layout: post
 title: "Exercism: The RNA Transcription Exercise"
 date: 2014-12-26 12:35:35 -0600
-author: Ian Whitney
 comments: true
 categories: 
 ---
@@ -24,8 +23,6 @@ class Complement
   end
 end
 ```
-
-<!--break-->
 
 (An aside: Did you know that Exercism has example solutions in [their Git repo](https://github.com/exercism/xruby/blob/master/rna-transcription/example.rb)? I did not. I was wondering why 40% of people's solutions looked exactly the same. Copying and pasting ain't learning, folks)
 
