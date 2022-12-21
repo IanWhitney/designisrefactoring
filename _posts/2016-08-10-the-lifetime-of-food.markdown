@@ -15,7 +15,7 @@ Let's model this dinner party in Rust and see if we can learn a thing or two abo
 
 We'll start off with the basics, a Dish that can be photographed.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Dish {
     name: String,
 }
@@ -33,7 +33,7 @@ fn main() {
     doro.photograph("Me");
     bruschetta.photograph("Me");
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 We have a `Dish` struct which contains a name. There's one function on `Dish`, `photograph`. You get your dishes from the hot new Italian/Ethiopian fusion restaurant and take their pictures.
 
@@ -47,7 +47,7 @@ fn honest_friend(dish: &Dish) {
 
 Our dinner-party now looks like:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Dish {
     name: String,
 }
@@ -72,7 +72,7 @@ fn main() {
     doro.photograph("Me");
     bruschetta.photograph("Me");
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Note that your friend is not explicitly returning the Dish at the end of their function. Thanks to Rust's borrowing rules they don't have to. When your friend's scope ends, the borrow ends.
 
@@ -95,7 +95,7 @@ fn trickster_friend(dish: &Dish) -> &Dish {
 }
 {% endhighlight %}
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Dish {
     name: String,
 }
@@ -130,7 +130,7 @@ fn main() {
     mystery_dish.photograph("Me");
     bruschetta.photograph("Me");
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Try both options and you'll see that your trickster friend can not prank you by giving you Pad Thai. The Pad Thai value is owned inside `trickster_friend` and is destroyed when `trickster_friend` ends. This is a bit easier to see if you inline the `trickster_friend` function into your `main` function 
 
@@ -160,7 +160,7 @@ fn impatient_friend(first_dish: &Dish, second_dish: &Dish) {
 }
 {% endhighlight %}
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Dish {
     name: String,
 }
@@ -185,13 +185,13 @@ fn main() {
     doro.photograph("Me");
     bruschetta.photograph("Me");
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Just as with your honest friend, this works fine. We loan our two dishes to our impatient friend who takes their photos. When `impatient_friend` ends, so do the borrows.
 
 But your trickster friend sees this exchange and gets an idea. They now know that they can't return a plate of Pad Thai, but they figure that if they borrow 2 plates and only return one, they can keep that extra plate for themselves.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Dish {
     name: String,
 }
@@ -218,7 +218,7 @@ fn main() {
 
     mystery_meal.photograph("Me!");
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Foiled again! If you run that you'll get `error: missing lifetime specifier`.
 
@@ -271,7 +271,7 @@ fn trickster_friend_option_four<'a, 'b>(first_dish: &'a Dish, second_dish: &'b D
 
 Let's see the differences between those options:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Dish {
     name: String,
 }
@@ -301,7 +301,7 @@ fn main() {
 
     mystery_meal.photograph("Me!");
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 In this example we've declared one lifetime, given it to the reference passed to `first_dish` and our return value. Trickster friend now _must_ return first_dish.
 

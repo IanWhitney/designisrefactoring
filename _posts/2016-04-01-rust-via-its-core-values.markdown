@@ -51,12 +51,12 @@ Ah, but Rust has a core value of speed. To enforce that core value, Rust does no
 
 There's a clear tension between these core values. With that in mind, let's learn some Rust!
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let x = 1;
   println!("{}", x);
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 This is about as simple a program as you can get in Rust.
 
@@ -64,25 +64,25 @@ If you want to guarantee memory safety, one way of doing that is to prevent data
 
 Thus, everything in Rust is immutable by default.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let x = 1;
   x = x + 1;
   println!("{}", x);
 }
 //<anon>:3:3: 3:12 error: re-assignment of immutable variable `x` [E0384]
-{% endrp_highlight %}
+{% endhighlight %}
 
 Of course, Rust developers also wants people to write programs in Rust. So we can declare things to be mutable if we really need to.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let mut x = 1;
   x = x + 1;
   println!("{}", x);
 }
 //2
-{% endrp_highlight %}
+{% endhighlight %}
 
 The `mut` keyword lets us explicitly say "this value is mutable." Explicitness is the fourth core value of Rust. Ironically, I don't see that "Explicitness" is ever explicitly stated as a goal of Rust. But, given the choice between implicitness and explicitness, Rust usually chooses explicitness.
 
@@ -100,14 +100,14 @@ Rust adheres to its core values and introduces an idea. Ownership. In Rust, each
 
 Let's see that in action:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let original_owner = String::from("Hello");
   let new_owner = original_owner;
   println!("{}", original_owner);
 }
 //<anon>:4:18: 4:32 error: use of moved value: `original_owner` [E0382]
-{% endrp_highlight %}
+{% endhighlight %}
 
 The verbose "String::from" syntax gives us a string we can actually own. We then give that ownership to the new owner. And at this point original_owner now owns...nothing. Our string can only have one owner.
 
@@ -115,7 +115,7 @@ Through ownership, Rust can start to uphold its value of memory safety. If a val
 
 Earlier I said that values were destroyed when they fell out of scope. So far we've only had one scope, our main function. Most programs have more than one scope. In Rust scopes are delineated by curly braces.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let first_scope = String::from("Hello");
 
@@ -126,7 +126,7 @@ fn main() {
   println!("{}", second_scope);
 }
 //<anon>:8:18: 8:30 error: unresolved name `second_scope` [E0425]
-{% endrp_highlight %}
+{% endhighlight %}
 
 When our inner scope ends, second_scope is destroyed. We can no longer access it.
 
@@ -141,18 +141,18 @@ Let's try to do something useful in Rust. Or as useful as can fit in this post. 
 
 First, functions. We declare them just like our main function:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length() {
 }
 
 fn main() {
   same_length();
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Our same_length function will need to accept two parameters, a source string and a other string to compare against.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1, s2) {
 }
 
@@ -163,11 +163,11 @@ fn main() {
   println!("{}", same_length(source, other));
 }
 //<anon>:1:18: 1:19 error: expected one of `:` or `@`, found `,`
-{% endrp_highlight %}
+{% endhighlight %}
 
 Rust loves explicitness. So we can't declare a function without stating what kind of data we're going to pass into it. Rust uses strong, static typing in its function signatures. This way the compiler can ensure we're using our functions correctly, preventing exploding programs. Explicit typing also lets us easily see what a function accepts. Our function only accepts Strings, so we declare that.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1: String, s2: String) {
 }
 
@@ -178,11 +178,11 @@ fn main() {
   println!("{}", same_length(source, other));
 }
 //<anon>:8:18: 8:44 error: the trait `core::fmt::Display` is not implemented for the type `()` [E0277]
-{% endrp_highlight %}
+{% endhighlight %}
 
 Most of Rust's compiler messages are helpful. This one, maybe not so much. What it's telling us is that our function is returning nothing, `()` and that can't print nothing. So our function should return...something. A boolean seems appropriate. Let's just return false for now.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1: String, s2: String) {
   false
 }
@@ -196,11 +196,11 @@ fn main() {
 //<anon>:2:3: 2:8 error: mismatched types:
 //expected `()`,
 //found `bool`
-{% endrp_highlight %}
+{% endhighlight %}
 
 Explicitness again. Not only do functions have to declare what they accept, they have to declare the type of the object that they return. We return a `bool`
 
-{% rp_highlight rust %}
+{% highlight rust %}
 #[allow(unused_variables)]
 fn same_length(s1: String, s2: String) -> bool {
   false
@@ -213,11 +213,11 @@ fn main() {
   println!("{}", same_length(source, other));
 }
 //false
-{% endrp_highlight %}
+{% endhighlight %}
 
 Cool. That compiles. Let's do an actual comparison. Strings have a `len()` function that returns their length:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1: String, s2: String) -> bool {
   s1.len() == s2.len()
 }
@@ -229,11 +229,11 @@ fn main() {
   println!("{}", same_length(source, other));
 }
 //false
-{% endrp_highlight %}
+{% endhighlight %}
 
 Great. Let's do two comparisons!
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1: String, s2: String) -> bool {
   s1.len() == s2.len()
 }
@@ -247,11 +247,11 @@ fn main() {
   println!("{}", same_length(source, other2));
 }
 //<anon>:11:30: 11:36 error: use of moved value: `source` [E0382]
-{% endrp_highlight %}
+{% endhighlight %}
 
 Remember the rules? Only one owner allowed. And when you reach the end of a curly brace the values are destroyed. When we call `same_length` we give it ownership of our values, and when it's done those values are destroyed. Comments make this a little easier to see.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1: String, s2: String) -> bool {
   s1.len() == s2.len()
 }
@@ -269,13 +269,13 @@ fn main() {
   //source no longer owns anything
 }
 //<anon>:11:30: 11:36 error: use of moved value: `source` [E0382]
-{% endrp_highlight %}
+{% endhighlight %}
 
 This seems pretty limiting. It's nice that Rust values memory safety so highly, but does it have to value it so highly?
 
 Rust ignores our griping and sticks to its core values by introducing Borrowing. A value can only have one owner, but any number of borrowers. Borrowing in Rust uses the `&` symbol.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 #[allow(unused_variables)]
 fn main() {
   let original_owner = String::from("Hello");
@@ -283,11 +283,11 @@ fn main() {
   println!("{}", original_owner);
 }
 //Hello
-{% endrp_highlight %}
+{% endhighlight %}
 
 Earlier in this talk we tried to do the same thing but with transferring ownership. That failed. But with borrowing it succeeds. We can use the same approach with our function:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_length(s1: &String, s2: &String) -> bool {
   s1.len() == s2.len()
 }
@@ -305,20 +305,20 @@ fn main() {
 }
 //false
 //true
-{% endrp_highlight %}
+{% endhighlight %}
 
 We explicitly borrow our data to the function, which explicitly says it only accepts borrowed things. When `same_length` finishes it stops borrowing the value, but the value is not destroyed.
 
 But wait, doesn't this break the memory safety Core Value that ownership solved? Won't code like this lead to disaster?
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn main() {
   let mut x = String::from("Hi!");
   let y = &x;
   y.truncate(0);
   // Oh noes! Truncate deletes our string!
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Well, no. Rust's Core Value of memory safety leads to the following rules:
 

@@ -22,7 +22,7 @@ As always, this is easier to understand with an example. Let's look at Primitive
 
 The problem is straight-forward: return `true` if the brackets in a string are balanced (all open brackets are closed in the correct order), and return `false` if they are not. There are a few different ways of solving it; I started with the following:
 
-{% rp_highlight rust %}
+{% highlight rust %}
 pub fn are_balanced(input: String) -> bool {
     let mut unmatched_brackets: Vec<char> = Vec::new();
 
@@ -50,7 +50,7 @@ fn main() {
     assert!(are_balanced("{[]}".to_string()));
     assert!(!are_balanced("[{]}".to_string()));
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 There are better ways to structure the logic, sure. But set that aside for a minute and let's focus on the primitives. In the above code I count five of them:
 
@@ -144,7 +144,7 @@ impl IntoIterator for Brackets {
 
 With this done, we can use `Brackets` throughout `are_balanced`
 
-{% rp_highlight rust %}
+{% highlight rust %}
 struct Brackets {
     input: String,
 }
@@ -192,7 +192,7 @@ fn main() {
     assert!(are_balanced("{[]}".to_string()));
     assert!(!are_balanced("[{]}".to_string()));
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 By implementing a Struct and two traits we've:
 

@@ -1,4 +1,4 @@
----
+
 layout: post
 title: "Simple Rust, Part Four"
 date: 2015-12-30T14:07:28-06:00
@@ -106,7 +106,7 @@ Great. Simply put, `iter()` takes a collection converts it into an Iterator; onc
 
 Filter will make it easy for us to replicate the first part of my Ruby solution, rejecting all inputs that are duplicates of the source word.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_word(source: &str, input: &str) -> bool {
   input == source
 }
@@ -120,7 +120,7 @@ fn main() {
   let outputs: Vec<&str> = vec!["tan"];
   assert_eq!(anagrams_for("ant", &inputs), outputs);
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Our filter uses the `same_word` function as its predicate. If the words are the same, we remove the input. If not, we keep the input. Running this gives us the error:
 
@@ -133,11 +133,11 @@ We've told Rust that `anagrams_for` returns a `Vec`, but it's returning a `Filte
 
 This is because Rust's iterators are lazy. Our call to filter doesn't actually do the filtering until we try to gather up the results. Ruby's [Enumerator](http://blog.carbonfive.com/2012/10/02/enumerator-rubys-versatile-iterator/) works similarly, as does its [lazy enumerable](http://railsware.com/blog/2012/03/13/ruby-2-0-enumerablelazy/). Rust calls its result-gathering functions [Consumers](https://doc.rust-lang.org/book/iterators.html#consumers). Since we want to collect the results of our filter, we use the `collect` consumer. And, as the documentation points out, we have to tell collect what type we want to get back. Our function promises to return a `Vec<&str>`, so let's have collect give us one of those:
 
-{% rp_highlight rust gist_id=300a74679625aa39d6ef %}
+{% highlight rust gist_id=300a74679625aa39d6ef %}
 fn anagrams_for<'a>(source: &str, inputs: &[&'a str]) -> Vec<&'a str> {
   inputs.iter().filter ( |&input| !same_word(input, source) ).collect::<Vec<&str>>()
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 Now we're sure to compile, right? By now you should know that every time I ask this question the answer is, "No."
 
@@ -153,11 +153,11 @@ The short answer is that `iter()` borrows each element in inputs. Inputs was ful
 
 We can fix our code by changing it to collect the right type, or we can also tell `collect` to figure out the type itself:
 
-{% rp_highlight rust gist_id=039b149600fbfabf5bed %}
+{% highlight rust gist_id=039b149600fbfabf5bed %}
 fn anagrams_for<'a>(source: &str, inputs: &[&'a str]) -> Vec<&'a str> {
   inputs.iter().filter ( |&input| !same_word(input, source) ).collect::<Vec<_>>()
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 The `_` is a 'type placeholder', which allows us to leave out the type of elements our vector will contain and let Rust determine it for us.
 
@@ -201,7 +201,7 @@ As far as I can tell `*` is not well documented in the Rust book. It's mentioned
 
 Emphasis mine. I dunno, maybe I'm off base, but this sounds pretty important. It's certainly important to us right now. We have a vector full of references to references, and we want to get a vector of just the original references:
 
-{% rp_highlight rust gist_id=30f7d172160840e63a9d %}
+{% highlight rust gist_id=30f7d172160840e63a9d %}
 fn anagrams_for<'a>(source: &str, inputs: &[&'a str]) -> Vec<&'a str> {
   let references =  inputs.iter().filter ( |&input| !same_word(input, source) ).collect::<Vec<_>>();
 
@@ -213,7 +213,7 @@ fn anagrams_for<'a>(source: &str, inputs: &[&'a str]) -> Vec<&'a str> {
 
   different_words
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 We create a new mutable vector and fill it with the `&str` references from our filtered collection. We then return that vector, and our code compiles!
 
@@ -231,7 +231,7 @@ I can then compare the sorted array of input characters to the sorted array of s
 
 We can do the same thing in Rust. The code looks familiar.
 
-{% rp_highlight rust %}
+{% highlight rust %}
 fn same_word(source: &str, input: &str) -> bool {
   input == source
 }
@@ -265,7 +265,7 @@ fn main() {
   let outputs: Vec<&str> = vec!["tan"];
   assert_eq!(anagrams_for("ant", &inputs), outputs);
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 In `same_letters` we use `chars()` to convert our source and input to an iterable collection of characters, which we then `collect`. We then sort those collections and compare them. This looks an awful lot like my Ruby example. Though in Rust, unlike Ruby, the `sort()` function sorts the receiver in place, it does not return the sorted collection.
 
@@ -310,7 +310,7 @@ Knowing that background, the `filter_map` description makes more sense. It:
 
 Let's see what our `anagrams_for` function would look like if it used `filter_map`
 
-{% rp_highlight rust gist_id=d3cf98c5197cdaaecbb3 %}
+{% highlight rust gist_id=d3cf98c5197cdaaecbb3 %}
 fn anagrams_for<'a>(source: &str, inputs: &[&'a str]) -> Vec<&'a str> {
   inputs.iter()
         .filter ( |&input| !same_word(input, source) )
@@ -323,7 +323,7 @@ fn anagrams_for<'a>(source: &str, inputs: &[&'a str]) -> Vec<&'a str> {
         )
         .collect::<Vec<_>>()
 }
-{% endrp_highlight %}
+{% endhighlight %}
 
 2 lines shorter. More importantly, I find this easier to understand. The result of `filter_map` is what we want to return, no need to loop and dereference a bunch of references.
 
